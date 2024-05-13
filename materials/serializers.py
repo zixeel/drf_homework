@@ -13,12 +13,12 @@ class CourseSerializer(ModelSerializer):
 class CourseDetailSerializer:
     lesson_in_course = SerializerMethodField()
 
-    def get_lesson_in_course(self, lesson):
-        return Lesson.objects.filter(course=lesson.course)
+    def get_lesson_in_course(self, course):
+        return Lesson.objects.filter(course=course).count()
 
     class Meta:
         model = Course
-        fields = ("name", "description",)
+        fields = ("name", "description", "lesson_in_course",)
 
 
 class LessonSerializer(ModelSerializer):
