@@ -10,7 +10,7 @@ class CourseSerializer(ModelSerializer):
         fields = "__all__"
 
 
-class CourseDetailSerializer:
+class CourseDetailSerializer(ModelSerializer):
     lesson_in_course = SerializerMethodField()
 
     def get_lesson_in_course(self, course):
