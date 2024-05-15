@@ -29,5 +29,12 @@ class Payment(models.Model):
     pay_day = models.DateField(auto_now_add=True, verbose_name='дата оплаты')
     paid_course = models.ForeignKey('materials.Course', on_delete=models.SET_NULL, verbose_name='оплаченный курс',
                                     **NULLABLE)
+    paid_lesson = models.ForeignKey('materials.Lesson', on_delete=models.SET_NULL, verbose_name='оплаченный курок',
+                                    **NULLABLE)
     payment_amount = models.IntegerField(verbose_name='сумма оплаты')
     payment_method = models.CharField(verbose_name='способ оплаты', choices=PAYMENT_METHOD)
+
+    class Meta:
+        verbose_name = 'Payment'
+        verbose_name_plural = 'Payments'
+
